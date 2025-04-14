@@ -1,2 +1,2 @@
 .gitignore
-sql/northwind.sql
+sql/database/northwind.sql
