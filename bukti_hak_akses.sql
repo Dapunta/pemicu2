@@ -28,9 +28,8 @@ DELETE FROM orders WHERE order_id = 999999;
 
 -- SELECT
 SELECT COUNT(*) FROM products;      -- berhasil
-SELECT COUNT(*) FROM suppliers;     -- berhasil
+SELECT COUNT(*) FROM suppliers;     -- gagal
 SELECT COUNT(*) FROM orders;        -- gagal
-SELECT COUNT(*) FROM order_details; -- gagal
 
 
 
@@ -40,6 +39,5 @@ SELECT COUNT(*) FROM order_details; -- gagal
 
 -- SELECT
 SELECT COUNT(*) FROM employees;     -- berhasil
-SELECT COUNT(*) FROM orders;        -- berhasil
+SELECT COUNT(*) FROM orders;        -- gagal
 SELECT COUNT(*) FROM order_details; -- gagal
-SELECT COUNT(*) FROM suppliers;     -- gagal
