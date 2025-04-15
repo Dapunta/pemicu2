@@ -110,8 +110,12 @@ ketentuan pembuatan query adalah :
 
 isi disini ...
 
+<br>
+
 # Pekerjaan 3 (administrasi database)
 
 <br>
 
 isi disini ...
+
+<br>
