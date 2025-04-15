@@ -7,6 +7,8 @@ Kemudian letakkan dalam `sql/`
 PostgreSQL : [Download](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)  
 pgAdmin 4 : [Windows](https://www.pgadmin.org/download/pgadmin-4-windows/)/[Linux](https://www.pgadmin.org/download/pgadmin-4-apt/)
 
+<br>
+
 # Pekerjaan 1 (indexing)
 
 ## Kondisi
@@ -90,41 +92,26 @@ ketentuan pembuatan query adalah :
     - hasil analisis
         - [sebelum indexing](/image/indexing/indexing_1_sebelum.png)
         - [setelah indexing](/image/indexing/indexing_1_setelah.png)
-<div>
-    <table style="border-collapse: collapse; width: 100%; max-width: 800px; table-layout: fixed; margin-left:8%;">
-        <tr>
-            <td style="border: 1px solid white; padding: 5px; text-align: center;">Parameter</td>
-            <td style="border: 1px solid white; padding: 5px; text-align: center;">Sebelum Indexing</td>
-            <td style="border: 1px solid white; padding: 5px; text-align: center;">Setelah Indexing</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Waktu eksekusi</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">181.518 ms</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">31.579 ms</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Strategi scan</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">	Parallel Seq Scan</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Bitmap Index + Index Scan</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Strategi join</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Parallel Hash Join</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Nested Loop Join</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Efisiensi filter</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Lambat (dengan full scan)</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Cepat (difilter oleh index)</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Baris yang dieliminasi</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Jutaan</td>
-            <td style="border: 1px solid white; padding: 5px 10px; text-align: left;">Ratusan</td>
-        </tr>
-    </table>
-</div>
+        &nbsp;
+
+        | **Parameter**            | **Sebelum Indexing**            | **Setelah Indexing**              |
+        |--------------------------|----------------------------------|-----------------------------------|
+        | Waktu eksekusi           | 181.518 ms                       | 31.579 ms                         |
+        | Strategi scan            | Parallel Seq Scan               | Bitmap Index + Index Scan        |
+        | Strategi join            | Parallel Hash Join              | Nested Loop Join                 |
+        | Efisiensi filter         | Lambat (dengan full scan)       | Cepat (difilter oleh index)      |
+        | Baris yang dieliminasi   | Jutaan                           | Ratusan                           |
 
 <br>
 
-- contoh 2
+# Pekerjaan 2 (tuning database)
+
+<br>
+
+isi disini ...
+
+# Pekerjaan 3 (administrasi database)
+
+<br>
+
+isi disini ...
