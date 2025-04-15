@@ -92,6 +92,7 @@ ketentuan pembuatan query adalah :
     - hasil analisis
         - [sebelum indexing](/image/indexing/indexing_1_sebelum.png)
         - [setelah indexing](/image/indexing/indexing_1_setelah.png)
+
         &nbsp;
 
         | **Parameter**            | **Sebelum Indexing**            | **Setelah Indexing**              |
