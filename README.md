@@ -117,6 +117,11 @@ isi disini ...
 
 <br>
 
-isi disini ...
+1. user
+    - [hasil](/image/administration/tambah_user_sebelum.png) sebelum menambahkan user
+    - [hasil](/image/administration/tambah_user_setelah.png) setelah menambahkan user
+2. hak akses
+    - [hasil](/image/administration/hak_akses_sebelum.png) sebelum menambahkan hak akses
+    - [hasil](/image/administration/hak_akses_setelah.png) setelah menambahkan hak akses
 
 <br>
