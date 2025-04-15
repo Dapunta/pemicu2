@@ -27,9 +27,9 @@ DELETE FROM orders WHERE order_id = 999999;
 -- password : salesnorthwind123
 
 -- SELECT
-SELECT COUNT(*) FROM products;      -- berhasil
-SELECT COUNT(*) FROM suppliers;     -- gagal
-SELECT COUNT(*) FROM orders;        -- gagal
+SELECT COUNT(*) FROM products;  -- berhasil
+SELECT COUNT(*) FROM suppliers; -- gagal
+SELECT COUNT(*) FROM orders;    -- gagal
 
 
 
