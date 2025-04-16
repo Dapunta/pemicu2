@@ -138,7 +138,6 @@ ketentuan pembuatan query adalah :
 
         | **Parameter**            | **Sebelum Indexing**            | **Setelah Indexing**              |
         |--------------------------|----------------------------------|-----------------------------------|
-        | Parameter | Sebelum Indexing | Sesudah Indexing |
         | Waktu eksekusi | 360.336 ms | 1.122 ms |
         | Join Method | Parallel Hash Join (multi-threaded) | Nested Loop (lebih ringan, efisien dengan index) |
         | Sort Method | Top-N Heapsort (dari hasil besar) | Tidak perlu sort eksplisit (pakai index scan) |
