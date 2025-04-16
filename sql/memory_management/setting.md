@@ -1,4 +1,4 @@
-### MEMORY MANAGEMENT
+### Memory Management
 
 1. query untuk melihat config
     ```sql

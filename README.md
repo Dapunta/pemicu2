@@ -169,5 +169,12 @@ isi disini ...
     - [hasil](/image/administration/hak_akses_setelah.png) setelah menambahkan hak akses
 3. bukti user dan penggunaan hak akses
     - [hasil](/image/administration/bukti/)
+4. memory management
+    - [step](/sql/memory_management/setting.md)
+    - [hasil](/image/memory_management/)
+5. backup & restore
+    - [step backup](/sql/backup_restore/backup.md)
+    - [step restore](/sql/backup_restore/restore.md)
+    - [hasil](/image/backup_restore/)
 
 <br>
