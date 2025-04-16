@@ -139,13 +139,13 @@ ketentuan pembuatan query adalah :
         | **Parameter**            | **Sebelum Indexing**            | **Setelah Indexing**              |
         |--------------------------|----------------------------------|-----------------------------------|
         | Waktu eksekusi | 360.336 ms | 1.122 ms |
-        | Join Method | Parallel Hash Join (multi-threaded) | Nested Loop (lebih ringan, efisien dengan index) |
-        | Sort Method | Top-N Heapsort (dari hasil besar) | Tidak perlu sort eksplisit (pakai index scan) |
+        | Join method | Parallel Hash Join (multi-threaded) | Nested Loop (lebih ringan, efisien dengan index) |
+        | Sort method | Top-N Heapsort (dari hasil besar) | Tidak perlu sort eksplisit (pakai index scan) |
         | Filter | Dilakukan saat Seq Scan (brute force) | Dilakukan saat Index Scan |
         | Scan | Parallel Seq Scan on order_details, orders | Index Scan menggunakan idx_* |
-        | Jumlah rows dibaca | 373,000+ | ~50 (langsung tembak dari index) |
-        | Functional Index digunakan | ❌ Tidak digunakan | ✅ idx_order_details_total_expr aktif |
-        | Cache Mode | Tidak disebut | Logical cache aktif (Memoize, Cache Key) |
+        | Jumlah rows dibaca | 373.000+ | ~50 (langsung baca dari index) |
+        | Functional index  | Tidak digunakan | idx_order_details_total_expr aktif |
+        | Cache mode | Tidak disebutkan | Logical cache aktif (memoize, cache key) |
 
 <br>
 
