@@ -123,5 +123,7 @@ isi disini ...
 2. hak akses
     - [hasil](/image/administration/hak_akses_sebelum.png) sebelum menambahkan hak akses
     - [hasil](/image/administration/hak_akses_setelah.png) setelah menambahkan hak akses
+3. bukti user dan penggunaan hak akses
+    - [hasil](/image/administration/bukti/)
 
 <br>
