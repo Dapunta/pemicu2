@@ -53,7 +53,7 @@ ketentuan pembuatan query adalah :
 
 <br>
 
-- contoh 1
+- **contoh 1**
     - query select
         ```sql
         EXPLAIN ANALYZE
@@ -80,14 +80,14 @@ ketentuan pembuatan query adalah :
         ```
     - query index
         ```sql
-        CREATE INDEX idx_orders_ship_region ON orders(ship_region);
-        CREATE INDEX idx_order_details_unit_price ON order_details(unit_price);
-        CREATE INDEX idx_order_details_discount ON order_details(discount);
-        CREATE INDEX idx_orders_order_id ON orders(order_id);
-        CREATE INDEX idx_order_details_order_id ON order_details(order_id);
-        CREATE INDEX idx_orders_customer_id ON orders(customer_id);
-        CREATE INDEX idx_customers_customer_id ON customers(customer_id);
-        CREATE INDEX idx_orders_order_date ON orders(order_date);
+        CREATE INDEX IF NOT EXISTS idx_orders_ship_region ON orders(ship_region);
+        CREATE INDEX IF NOT EXISTS idx_order_details_unit_price ON order_details(unit_price);
+        CREATE INDEX IF NOT EXISTS idx_order_details_discount ON order_details(discount);
+        CREATE INDEX IF NOT EXISTS idx_orders_order_id ON orders(order_id);
+        CREATE INDEX IF NOT EXISTS idx_order_details_order_id ON order_details(order_id);
+        CREATE INDEX IF NOT EXISTS idx_orders_customer_id ON orders(customer_id);
+        CREATE INDEX IF NOT EXISTS idx_customers_customer_id ON customers(customer_id);
+        CREATE INDEX IF NOT EXISTS idx_orders_order_date ON orders(order_date);
         ```
     - hasil analisis
         - [sebelum indexing](/image/indexing/indexing_1_sebelum.png)
@@ -102,6 +102,51 @@ ketentuan pembuatan query adalah :
         | Strategi join            | Parallel Hash Join              | Nested Loop Join                 |
         | Efisiensi filter         | Lambat (dengan full scan)       | Cepat (difilter oleh index)      |
         | Baris yang dieliminasi   | Jutaan                           | Ratusan                           |
+
+- **contoh 2**
+    - query select
+        ```sql
+        EXPLAIN ANALYZE
+        SELECT 
+            o.order_id,
+            o.order_date,
+            p.product_name,
+            d.unit_price,
+            d.quantity,
+            d.unit_price * d.quantity AS total
+        FROM orders o
+        JOIN order_details d ON o.order_id = d.order_id
+        JOIN products p ON d.product_id = p.product_id
+        WHERE d.unit_price > 50
+        ORDER BY total DESC
+        LIMIT 50;
+        ```
+    - query index
+        ```sql
+        CREATE INDEX IF NOT EXISTS idx_order_details_unit_price ON order_details(unit_price);
+        CREATE INDEX IF NOT EXISTS idx_order_details_product_id ON order_details(product_id);
+        CREATE INDEX IF NOT EXISTS idx_order_details_order_id ON order_details(order_id);
+        CREATE INDEX IF NOT EXISTS idx_products_product_id ON products(product_id);
+        CREATE INDEX IF NOT EXISTS idx_orders_order_id ON orders(order_id);
+        CREATE INDEX IF NOT EXISTS idx_order_details_total_expr ON order_details ((unit_price * quantity));
+        ```
+    - hasil analisis
+        - [sebelum indexing](/image/indexing/indexing_2_sebelum.png)
+        - [setelah indexing](/image/indexing/indexing_2_setelah.png)
+
+        &nbsp;
+
+        | **Parameter**            | **Sebelum Indexing**            | **Setelah Indexing**              |
+        |--------------------------|----------------------------------|-----------------------------------|
+        | Parameter | Sebelum Indexing | Sesudah Indexing |
+        | Waktu eksekusi | 360.336 ms | 1.122 ms |
+        | Join Method | Parallel Hash Join (multi-threaded) | Nested Loop (lebih ringan, efisien dengan index) |
+        | Sort Method | Top-N Heapsort (dari hasil besar) | Tidak perlu sort eksplisit (pakai index scan) |
+        | Filter | Dilakukan saat Seq Scan (brute force) | Dilakukan saat Index Scan |
+        | Scan | Parallel Seq Scan on order_details, orders | Index Scan menggunakan idx_* |
+        | Jumlah rows dibaca | 373,000+ | ~50 (langsung tembak dari index) |
+        | Functional Index digunakan | ❌ Tidak digunakan | ✅ idx_order_details_total_expr aktif |
+        | Cache Mode | Tidak disebut | Logical cache aktif (Memoize, Cache Key) |
 
 <br>
 

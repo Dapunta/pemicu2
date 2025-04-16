@@ -1,4 +1,4 @@
-[ STEP ]
+[ STEP MEMORY MANAGEMENT ]
 
 1. lihat setting awal *(query sql)*  
     ```sql
