@@ -162,12 +162,40 @@ isi disini ...
 <br>
 
 1. user
+    ```sql
+    CREATE USER admin_northwind WITH PASSWORD 'adminnorthwind123';
+    CREATE USER sales_northwind WITH PASSWORD 'salesnorthwind123';
+    CREATE USER hr_northwind WITH PASSWORD 'hrnorthwind123';
+    ```
     - [hasil](/image/administration/tambah_user_sebelum.png) sebelum menambahkan user
     - [hasil](/image/administration/tambah_user_setelah.png) setelah menambahkan user
 2. hak akses
+    ```sql
+    -- admin_northwind
+    GRANT SELECT, INSERT, UPDATE, DELETE ON orders TO admin_northwind;
+    GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO admin_northwind;
+
+    -- sales_northwind
+    GRANT SELECT ON products TO sales_northwind;
+    GRANT INSERT, UPDATE ON suppliers TO sales_northwind;
+
+    -- hr_northwind
+    GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO hr_northwind;
+    ```
     - [hasil](/image/administration/hak_akses_sebelum.png) sebelum menambahkan hak akses
     - [hasil](/image/administration/hak_akses_setelah.png) setelah menambahkan hak akses
 3. bukti user dan penggunaan hak akses
+    ```sql
+    -- lihat semua daftar hak akses
+    SELECT 
+        grantee AS user_name,
+        table_name,
+        string_agg(privilege_type, ', ' ORDER BY privilege_type) AS privileges
+    FROM information_schema.role_table_grants
+    WHERE grantee IN ('admin_northwind', 'sales_northwind', 'hr_northwind')
+    GROUP BY grantee, table_name
+    ORDER BY grantee, table_name;
+    ```
     - [hasil](/image/administration/bukti/)
 4. memory management
     - [step](/sql/memory_management/setting.md)
