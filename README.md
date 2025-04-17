@@ -51,8 +51,6 @@ ketentuan pembuatan query adalah :
 
 ### Contoh Query
 
-<br>
-
 - **contoh 1**
     - query select
         ```sql
@@ -146,6 +144,18 @@ ketentuan pembuatan query adalah :
         | Jumlah rows dibaca | 373.000+ | ~50 (langsung baca dari index) |
         | Functional index  | Tidak digunakan | idx_order_details_total_expr aktif |
         | Cache mode | Tidak disebutkan | Logical cache aktif (memoize, cache key) |
+
+### Kesimpulan
+
+- Dampak penggunaan indexing pada suatu database
+    | Aspek | Dampak Indexing |
+    |-------|-----------------|
+    | Waktu eksekusi | Jauh lebih cepat |
+    | Strategi scan | Index Scan > Seq Scan |
+    | Join method | Nested Loop > Hash Join |
+    | Filter | Langsung lewat index |
+    | Baris yang dibaca | Turun drastis |
+    | Resource server | Lebih hemat |
 
 <br>
 
