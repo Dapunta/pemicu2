@@ -165,6 +165,7 @@ ketentuan pembuatan query adalah :
 
 Sebelum tuning
 
+![image](https://github.com/user-attachments/assets/331ce59f-4e92-42e9-bf0c-e1b7dc9b830f)
 
 Setelah Tuning
 
